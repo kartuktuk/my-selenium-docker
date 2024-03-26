@@ -22,8 +22,8 @@ pipeline{
             steps{
                 sh 'echo ${DOCKER_HUB_PSW} | docker login -u ${DOCKER_HUB_USR} --password-stdin'
                 sh "docker push kardockdock/selenium:latest"
-                                sh "docker push kardockdock/selenium:latest kardockdock/selenium:${env.BUILD_NUMBER}"
-                                sh "docker push kardockdock/selenium:${BUILD_NUMBER}"
+                sh "docker tag kardockdock/selenium:latest kardockdock/selenium:${env.BUILD_NUMBER}"
+                sh "docker push kardockdock/selenium:${BUILD_NUMBER}"
 
             }
         }
